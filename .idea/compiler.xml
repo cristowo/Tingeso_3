@@ -2,22 +2,36 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="eureka-service" />
         <module name="script-service" />
         <module name="user-service" />
+        <module name="config-service" />
+        <module name="gateway-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="config-service" target="17" />
+      <module name="eureka-service" target="11" />
+      <module name="gateway-service" target="1.8" />
+      <module name="proveedor-service" target="17" />
       <module name="script-service" target="17" />
+      <module name="scripts-service" target="17" />
       <module name="user-service" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="config-service" options="-parameters" />
+      <module name="eureka-service" options="-parameters" />
+      <module name="gateway-service" options="-parameters" />
+      <module name="proveedor-service" options="-parameters" />
       <module name="script-service" options="-parameters" />
+      <module name="scripts-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
   </component>
