@@ -1,5 +1,7 @@
 package tingeso3.scriptservice.Repositories;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,8 +12,8 @@ import java.util.List;
 
 @Repository
 public interface ScriptRepository extends JpaRepository<ScriptEntity, String> {
-
-    @Query("SELECT s FROM scripts s WHERE s.dificultad = :dificultad ORDER BY RANDOM() LIMIT 4")
-    public List<ScriptEntity> getRandomScriptForLevel(@Param("dificultad") String dificultad);
+    
+    @Query("SELECT s FROM ScriptEntity s WHERE s.dificultad = :dificultad ORDER BY function('RAND')")
+    public List<ScriptEntity> getRandomScriptForLevel(@Param("dificultad") String dificultad, Pageable pageable);
 
 }

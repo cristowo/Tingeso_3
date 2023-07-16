@@ -2,6 +2,7 @@ package tingeso3.scriptservice.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import tingeso3.scriptservice.Entities.ScriptEntity;
 import tingeso3.scriptservice.Service.ScriptService;
 
@@ -15,8 +16,10 @@ public class ScriptController {
     ScriptService scriptService;
 
     @PostMapping
-    public void guardarScript(@RequestBody ScriptEntity script) {
-        scriptService.guardarScript(script);
+    public void guardarScript(@RequestParam("codigo") MultipartFile codigo,
+                              @RequestParam("dificultad") String dificultad,
+                              @RequestParam("respuesta") String respuesta) {
+        scriptService.guardarScript(codigo, dificultad, respuesta);
     }
 
     @GetMapping
