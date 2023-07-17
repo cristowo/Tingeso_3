@@ -11,7 +11,7 @@ function App() {
         <div className="navbar-logo"><img src={logo} alt="Logo" /></div>
         <div className="navbar-title">RACING</div>
       </div>
-      <div className="text-right"><a href='/informacion'>Detalles</a></div>
+      <div className="text-right"><a href='/informacion'>Juegos</a></div>
     </nav>
   );
 }

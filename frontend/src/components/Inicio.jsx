@@ -9,22 +9,22 @@ export default class InicioComponent extends Component {
             <div class="container">
                 <div class="flexbox-container">
                     <div>
-                    <br />
-                        Conoce a Daigo, el mejor programador de la semana.
-                        <br /><br />
-                        <img src = {player} alt="faker" className="image-size"/>
-                        <br />
-                        <p class="comentario">Daigo es un programador de Python Racing que ha logrado batir el 76% de los scripts de la comunidad. </p>
+                        <div class = "box"><br />
+                            ¿Quieres aportar a la comunidad de Python Racing?.
+                            <br />
+                            <p class="comentario">Sube un script de tu código para que este sea incluido dentro de nuestras carreras.</p>
+                            <button class="animated-button">Subir Script</button>
+                        </div>
+                        <div class = "box"><br />
+                            Que esperas para unirte a la comunidad de Python Racing.
+                            <br />
+                            <p class="comentario">Python Racing es una comunidad de programadores que ponen a prueba sus habilidades de programación y entendimiento de algoritmos.</p>
+                            <button class="animated-button">Ver detalles</button>
+                            <button class="animated-button darker-button" >Ir a los juegos</button>
+                        </div>
                     </div>
                     <div>
-                    <br />
-                        Que esperas para unirte a la comunidad de Python Racing.
-                        <br />
-                        <p class="comentario">Python Racing es una comunidad de programadores que ponen a prueba sus habilidades de programación y entendimiento de algoritmos.</p>
-                        <button class="animated-button">Ver detalles</button>
-                        <button class="animated-button darker-button" >Ir a los juegos</button>
-
-                        <div class ="down">
+                        <div class ="box"><br />
                             Inicio Rápido
                             <p class="comentario">Selecciona entre nuestros 3 modos de carrera.</p>
                             <button class="animated-button">Fácil</button>
@@ -33,10 +33,13 @@ export default class InicioComponent extends Component {
                         </div>
                     </div>
                 </div>
-                <div>
-                    ¿Quieres aportar a la comunidad de Python Racing?.
+                <div class = "box">
                     <br />
-                    <p class="comentario">Sube un script de tu código para que este sea incluido dentro de nuestras carreras.</p>
+                    Conoce a Daigo, el mejor programador de la semana.
+                    <br /><br />
+                    <img src = {player} alt="faker" className="image-size"/>
+                    <br />
+                    <p class="comentario">Daigo es un programador de Python Racing que ha logrado batir el 76% de los scripts de la comunidad. </p>
                 </div>
             </div>
         );
