@@ -1,11 +1,15 @@
-.black-container {
-    background-color: #17927d;
-    color: #ffffff;
-    padding: 20px;
+.box {
+    background: #0e312c;
     border-radius: 10px;
-  }
+    margin-top: 30px;
+}
 
-/* Estilos base del botón */
+/* -------------- BOTONES ---------------------------- */
+.box > button:last-child{
+    border-end-start-radius: 10px;
+    border-end-end-radius: 10px;
+}
+
 .animated-button {
     background-color: #17927d;
     color: #d3f8f2;
@@ -17,18 +21,22 @@
     font-size: 20px;
     width: 100%;
 }
+
 .darker-button {
-    background-color: rgba(33, 131, 114, 0.8);
+    background-color: #146e5f;
 }
 
 .darker-button2 {
-    background-color: rgba(17, 75, 65, 0.8);
+    background-color: #114b41;
 }
 
 .animated-button:hover {
-    background-color: #002d24; /* Cambia el color de fondo más oscuro cuando el cursor está sobre el botón */
+    background-color: #d3f8f2;
+    color: #17927d;
 }
+/* --------------------------------------------------- */	
 
+/* -------------- FLEXBOX ---------------------------- */
 .flexbox-container {
 	display: -ms-flex;
 	display: -webkit-flex;
@@ -47,7 +55,9 @@
 .flexbox-container > div:first-child {
 	margin-right: 30px;
 }
+/* --------------------------------------------------- */
 
+/* -------------- Texto e imágenes --------------------------- */
 .comentario {
     font-size: 18px;
     opacity: 0.5;
@@ -61,21 +71,10 @@
     border: 1px solid transparent; 
 }
 
-.down {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
+.titulo{
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
-
-.box {
-    background: #0e312c;
-    border-radius: 10px;
-    margin-top: 30px;
-}
-.box > button:last-child{
-    border-end-start-radius: 10px;
-    border-end-end-radius: 10px;
-}
+/* --------------------------------------------------- */

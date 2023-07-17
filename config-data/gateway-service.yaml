@@ -30,3 +30,7 @@ spring:
           uri: lb://script-service
           predicates:
             - Path=/scripts/**
+        - id: test-service
+          uri: lb://test-service
+          predicates:
+            - Path=/tests/**
