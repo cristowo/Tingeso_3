@@ -1,17 +1,16 @@
 body {
     margin: 0;
     padding: 0;
+    color: #d3f8f2;
 }
 
 .centro{
-    color: #ffffff;
     display: flex;
     flex-basis: 0;
     align-items: center;
 }
 
 .text-left {
-    color: #ffffff;
     display: flex;
     flex-grow: 1;
     flex-basis: 0;
@@ -22,7 +21,7 @@ body {
 .text-left a {
     margin-left: 20px;
     text-decoration: none;
-    color: #ffffff;
+    color: #d3f8f2;
 }
 
 .text-right {
@@ -37,11 +36,11 @@ body {
 .text-right a {
     margin-right: 20px;
     text-decoration: none;
-    color: #ffffff;
+    color: #d3f8f2;
 }
 
 nav {
-    background-color: #000000;
+    background-color: #051f1b;
     height: 80px; 
     display: flex;
     flex-direction: row;
@@ -53,7 +52,6 @@ nav {
 }
 
 .navbar-title {
-    color: #ffffff;
     font-size: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 5px;
