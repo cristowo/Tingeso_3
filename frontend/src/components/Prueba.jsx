@@ -7,45 +7,42 @@ export default class PruebaComponent extends Component {
         super(props);
         this.state = {
             dificultad: this.props.match.params.dificultad,
-            test: []
+            scripts: []
         };
     }
-	
+	// test tiene: id, pregunta, respuesta, dificultad y script
     componentDidMount() {
         TestService.getTest(this.state.dificultad).then( res => {
-            this.setState({test: res.data});
+            this.setState({scripts: res.data});
         })
     }
-    
+
     render() {
         return (
-            <div class="container">
-                <b class="titulo">Selecciona tu dificultad</b>
-                <div class="flexbox-container">
-                    <div>
-                        <div class = "box"><br />
-                            Fácil 😀
-                            <br />
-                            <p class="comentario"> Categoria ideal para jugadores con poco manejo de python. </p>
-                            <button class="animated-button">INICIAR</button>
-                        </div>
-                    </div>
-                    <div>
-                        <div class = "box"><br />
-                            Intermedia 😓
-                            <br />
-                            <p class="comentario"> Categoria ideal para jugadores con manejo de python.</p>
-                            <button class="animated-button">INICIAR</button>
-                        </div>
-                    </div>
-                    <div>
-                        <div class = "box"><br />
-                            Avanzada 🤬
-                            <br />
-                            <p class="comentario">Categoria para jugadores con manejo avanzado de python.</p>
-                            <button class="animated-button">INICIAR</button>
-                        </div>
-                    </div>
+            <div class>
+                <h1 className="text-center">Test de dificultad {this.state.dificultad}</h1>
+                <div className="row">
+                    <table className="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Pregunta</th>
+                                <th>Respuesta</th>
+                                <th>código</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.state.scripts.map(
+                                    script =>
+                                        <tr key={script.id}>
+                                            <td>{script.pregunta}</td>
+                                            <td>{script.respuesta}</td>
+                                            <td>{script.codigo}</td>
+                                        </tr>
+                                )
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         );

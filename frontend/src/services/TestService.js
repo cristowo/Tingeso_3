@@ -1,6 +1,7 @@
 import axios from 'axios';
+import {URL_BASE} from '../recursos/urls';
 
-const url = 'http://gateway-service:8080/test';
+const url = URL_BASE+'/tests';
 
 class TestService{
     getTest(dificultad){
