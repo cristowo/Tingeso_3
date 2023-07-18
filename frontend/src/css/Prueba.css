@@ -1,0 +1,46 @@
+.custom-code {
+    font-size: 16px; 
+}
+
+.box-code {
+    background: #0e312c;
+    border-radius: 10px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Contenedor principal */
+.center-content {
+    display: flex; 
+    margin-top: 100px;
+    position: relative;
+  }
+  
+  /* Izquierda 25% */
+  .center-content > div:first-child {
+    flex: 0 0 25%;
+    position: fixed;
+    top: 10;
+    left: 0;
+    height: 100%;
+    padding-left: 20px;
+  }
+  
+  /* Centro 50% */
+  .center-content > div:nth-child(2) {
+    flex: 25 0 50%; 
+    display: flex;
+    justify-content: center; 
+  }
+  
+  /* Derecha 25% */
+  .center-content > div:last-child {
+    flex: 0 0 25%;
+    position: fixed;
+    top: 10;
+    right: 0;
+    height: 100%; 
+    padding-right: 20px;
+  }
+  

@@ -29,7 +29,8 @@ public class TestService {
             lista.add(scripts.get(i).getId());
         }
         testEntity.setIdScripts(lista);
-        testRepository.save(testEntity);
+        testEntity = testRepository.save(testEntity);
+        scripts.get(0).setId_test(testEntity.getId());
         return scripts;
     }
 
@@ -44,7 +45,6 @@ public class TestService {
 
     public List<String> getPuntaje(Integer idtest, List<String> respuestas, Double tiempo){
         TestEntity test = testRepository.getTestEntityById(idtest);
-        System.out.println(test);
         test.setRespuestas(respuestas);
         test.setTiempoTotal(tiempo);
         double acum = 0;
@@ -53,21 +53,15 @@ public class TestService {
             if (Objects.equals(getScript(test.getIdScripts().get(i)).getRespuesta(), respuestas.get(i))){
                 acum = acum + 7;
                 lista.add("Buena");
-                System.out.println("olaaaa");
-                System.out.println(test.getIdScripts().get(i));
             }else{
                 acum = acum + 1;
                 lista.add("Mala");
-                System.out.println("adioooos");
-                System.out.println(test.getIdScripts().get(i));
-
             }
         }
         double puntaje = acum/test.getIdScripts().size();
         test.setPuntaje(puntaje);
         testRepository.save(test);
         lista.add(Double.toString(puntaje));
-        System.out.println(lista);
         return lista;
     }
 

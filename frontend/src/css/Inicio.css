@@ -10,6 +10,11 @@
     border-end-end-radius: 10px;
 }
 
+.box > div > button:last-child{
+    border-end-start-radius: 10px;
+    border-end-end-radius: 10px;
+}
+
 .animated-button {
     background-color: #17927d;
     color: #d3f8f2;

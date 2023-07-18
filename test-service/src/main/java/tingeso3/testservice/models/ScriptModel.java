@@ -12,4 +12,5 @@ public class ScriptModel {
     String dificultad;
     String codigo;
     String respuesta;
+    Integer id_test;
 }

@@ -22,14 +22,14 @@ export default class InicioComponent extends Component {
                             ¿Quieres aportar a la comunidad de Python Racing?.
                             <br />
                             <p class="comentario">Sube un script de tu código para que este sea incluido dentro de nuestras carreras.</p>
-                            <button class="animated-button" onClick={() => this.selectDificultad(PATH_UPLOAD)}>Subir Script</button>
+                            <button class="animated-button" onClick={() => this.simpleRedirect(PATH_UPLOAD)}>Subir Script</button>
                         </div>
                         <div class = "box"><br />
                             Que esperas para unirte a la comunidad de Python Racing.
                             <br />
                             <p class="comentario">Python Racing es una comunidad de programadores que ponen a prueba sus habilidades de programación y entendimiento de algoritmos.</p>
                             <button class="animated-button">Ver detalles</button>
-                            <button class="animated-button darker-button" onClick={() => this.selectDificultad(PATH_GAMES)}>Ir a los juegos</button>
+                            <button class="animated-button darker-button" onClick={() => this.simpleRedirect(PATH_GAMES)}>Ir a los juegos</button>
                         </div>
                     </div>
                     <div>

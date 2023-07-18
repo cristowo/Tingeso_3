@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Inicio.css';
-import { PATH_TEST} from '../recursos/urls';
+import { PATH_TEST, PATH_NOVATO, PATH_AVANZADO, PATH_INTERMEDIO} from '../recursos/urls';
 
 export default class GamesComponent extends Component {
 
@@ -35,7 +35,7 @@ export default class GamesComponent extends Component {
                             Fácil 😀
                             <br />
                             <p class="comentario"> Categoria ideal para jugadores con poco manejo de python. </p>
-                            <button class="animated-button" onClick={() => this.selectDificultad("/facil")}>INICIAR</button>
+                            <button class="animated-button" onClick={() => this.selectDificultad(PATH_NOVATO)}>INICIAR</button>
                         </div>
                     </div>
                     <div>
@@ -43,7 +43,7 @@ export default class GamesComponent extends Component {
                             Intermedia 😓
                             <br />
                             <p class="comentario"> Categoria ideal para jugadores con manejo de python.</p>
-                            <button class="animated-button" onClick={() => this.selectDificultad("/intermedia")}>INICIAR</button>
+                            <button class="animated-button" onClick={() => this.selectDificultad(PATH_INTERMEDIO)}>INICIAR</button>
                         </div>
                     </div>
                     <div>
@@ -51,7 +51,7 @@ export default class GamesComponent extends Component {
                             Avanzada 🤬
                             <br />
                             <p class="comentario">Categoria para jugadores con manejo avanzado de python.</p>
-                            <button class="animated-button" onClick={() => this.selectDificultad("/dificil")}>INICIAR</button>
+                            <button class="animated-button" onClick={() => this.selectDificultad(PATH_AVANZADO)}>INICIAR</button>
                         </div>
                     </div>
                 </div>
