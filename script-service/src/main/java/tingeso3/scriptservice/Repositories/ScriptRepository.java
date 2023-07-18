@@ -16,4 +16,7 @@ public interface ScriptRepository extends JpaRepository<ScriptEntity, Integer> {
     @Query("SELECT s FROM ScriptEntity s WHERE s.dificultad = :dificultad")
     public List<ScriptEntity> getRandomScriptForLevel(@Param("dificultad") String dificultad);
 
+    @Query("select s from ScriptEntity s where s.id = :id")
+    public ScriptEntity getById(@Param("id") Integer id);
+
 }

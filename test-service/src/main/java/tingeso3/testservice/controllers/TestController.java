@@ -15,13 +15,8 @@ public class TestController {
     @Autowired
     TestService testService;
 
-    @PostMapping("/{dificultad}")
-    public ResponseEntity<List<ScriptModel>> crearTest(@PathVariable("dificultad") String dificultad){
-        return ResponseEntity.ok(testService.newTest(dificultad));
+    @PostMapping("/resultado/{scripts}/{resultados}/{time}")
+    public ResponseEntity<List<String>> getPuntaje(@PathVariable("scripts") List<Integer> scripts, @PathVariable("resultados") List<String> resultados, @PathVariable("time") Double tiempo){
+        return ResponseEntity.ok(testService.getPuntaje(scripts, resultados, tiempo));
     }
-
-    @PutMapping("/resultado/{id}/{list}/{time}")
-    public ResponseEntity<List<String>> getPuntaje(@PathVariable("id") Integer idtest, @PathVariable("list") List<String> respuestas, @PathVariable("time") Double tiempo){
-        return ResponseEntity.ok(testService.getPuntaje(idtest, respuestas, tiempo));
-    }
-    }
+}

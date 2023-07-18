@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import '../css/Inicio.css';
 import '../css/Prueba.css';
+import ScriptService from '../services/ScriptService';
 import TestService from '../services/TestService';
+
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedDarkAtom } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -12,7 +14,7 @@ export default class PruebaComponent extends Component {
       dificultad: this.props.match.params.dificultad,
       scripts: [],
       respuesta: [],
-      id: 0,
+      id: [],
       tiempo: 0.0,
       puntaje: [],
       respuestaSubida: false,
@@ -20,17 +22,25 @@ export default class PruebaComponent extends Component {
   }
 
   componentDidMount() {
-    TestService.getTest(this.state.dificultad).then((res) => {
+    ScriptService.getScripts(this.state.dificultad)
+    .then((res) => {
       this.setState({ scripts: res.data });
+  
+      const scriptIDs = res.data.map((script) => script.id);
+      this.setState({ id: scriptIDs });
+    })
+    .catch((error) => {
+      console.error("Hubo un error al obtener los scripts: ", error);
     });
+  
   }
+  
 
   changeRespuestaHandler = (event, i) => {
     if (!this.state.respuestaSubida) {
       const respuestaCopy = [...this.state.respuesta];
       respuestaCopy[i] = event.target.value;
-      const id_test = this.state.scripts[0].id_test;
-      this.setState({ respuesta: respuestaCopy, id: id_test });
+      this.setState({ respuesta: respuestaCopy});
     }
   };
 

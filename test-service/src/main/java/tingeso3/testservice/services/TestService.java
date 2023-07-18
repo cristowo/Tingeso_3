@@ -20,20 +20,6 @@ public class TestService {
     @Autowired
     RestTemplate restTemplate;
 
-    public List<ScriptModel> newTest(String dificultad){
-        TestEntity testEntity = new TestEntity();
-        testEntity.setDificultad(dificultad);
-        List<ScriptModel> scripts = getScripts(dificultad);
-        List<Integer> lista = new ArrayList<>();
-        for(int i=0; i < scripts.size(); i++){
-            lista.add(scripts.get(i).getId());
-        }
-        testEntity.setIdScripts(lista);
-        testEntity = testRepository.save(testEntity);
-        scripts.get(0).setId_test(testEntity.getId());
-        return scripts;
-    }
-
     public List<ScriptModel> getScripts(String dificultad){
         ScriptModel[] scripts = restTemplate.getForObject("http://script-service/scripts/random/" + dificultad, ScriptModel[].class);
         return Arrays.stream(scripts).toList();
@@ -43,14 +29,16 @@ public class TestService {
         return restTemplate.getForObject("http://script-service/scripts/" + id, ScriptModel.class);
     }
 
-    public List<String> getPuntaje(Integer idtest, List<String> respuestas, Double tiempo){
-        TestEntity test = testRepository.getTestEntityById(idtest);
+    public List<String> getPuntaje(List<Integer> Idscripts, List<String> respuestas, Double tiempo){
+        TestEntity test = new TestEntity();
         test.setRespuestas(respuestas);
         test.setTiempoTotal(tiempo);
-        double acum = 0;
         List<String> lista = new ArrayList<>();
-        for(int i = 0; i < test.getIdScripts().size(); i++){
-            if (Objects.equals(getScript(test.getIdScripts().get(i)).getRespuesta(), respuestas.get(i))){
+        double acum = 0;
+        Integer idScriptSize = Idscripts.size();
+        for(int i = 0; i < idScriptSize; i++){
+            ScriptModel script = getScript(Idscripts.get(i));
+            if (Objects.equals(script.getRespuesta(), respuestas.get(i))){
                 acum = acum + 7;
                 lista.add("Buena");
             }else{
@@ -58,8 +46,9 @@ public class TestService {
                 lista.add("Mala");
             }
         }
-        double puntaje = acum/test.getIdScripts().size();
+        double puntaje = acum/idScriptSize;
         test.setPuntaje(puntaje);
+        test.setIdScripts(Idscripts);
         testRepository.save(test);
         lista.add(Double.toString(puntaje));
         return lista;
