@@ -11,9 +11,9 @@ import tingeso3.scriptservice.Entities.ScriptEntity;
 import java.util.List;
 
 @Repository
-public interface ScriptRepository extends JpaRepository<ScriptEntity, String> {
+public interface ScriptRepository extends JpaRepository<ScriptEntity, Integer> {
     
-    @Query("SELECT s FROM ScriptEntity s WHERE s.dificultad = :dificultad ORDER BY function('RAND')")
-    public List<ScriptEntity> getRandomScriptForLevel(@Param("dificultad") String dificultad, Pageable pageable);
+    @Query("SELECT s FROM ScriptEntity s WHERE s.dificultad = :dificultad")
+    public List<ScriptEntity> getRandomScriptForLevel(@Param("dificultad") String dificultad);
 
 }
