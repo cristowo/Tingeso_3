@@ -4,6 +4,74 @@
     margin-top: 30px;
 }
 
+.comentario2 {
+    font-size: 18px;
+}
+
+.respuesta {
+    border-radius: 10px;
+    font-size: 18px;
+    color: #d3f8f2;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #06725c;
+    background: #0a221e;
+    text-align: center;
+}
+
+.respuesta::placeholder {
+    color: #d3f8f2;
+    opacity: 0.5; 
+    text-align: center;
+}
+
+.input-file {
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid #06725c;
+    background: #0a221e;
+    color: #d3f8f2;
+    font-size: 18px;
+    padding: 100px;
+}
+.input-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    cursor: pointer;
+    padding: 100px;
+}
+
+.input-file:hover {
+    background: #06725c;
+}
+
+
+.cajita {
+    display: inline-block;
+    border: 1px solid #06725c;
+    background: #0a221e;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.cajita label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.cajita input[type="radio"] {
+    margin-right: 5px;
+}
+
+.alone{
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
 /* -------------- BOTONES ---------------------------- */
 .box > button:last-child{
     border-end-start-radius: 10px;

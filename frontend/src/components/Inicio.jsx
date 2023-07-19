@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../css/Inicio.css';
-import player from '../recursos/faker.png';
 import { PATH_TEST, PATH_NOVATO, PATH_AVANZADO, PATH_INTERMEDIO, PATH_GAMES, PATH_UPLOAD} from '../recursos/urls';
 
 export default class InicioComponent extends Component {
@@ -41,14 +40,6 @@ export default class InicioComponent extends Component {
                             <button class="animated-button darker-button2" onClick={() => this.selectDificultad(PATH_AVANZADO)}>Avanzada</button>
                         </div>
                     </div>
-                </div>
-                <div class = "box">
-                    <br />
-                    Conoce a Daigo, el mejor programador de la semana.
-                    <br /><br />
-                    <img src = {player} alt="faker" className="image-size"/>
-                    <br />
-                    <p class="comentario">Daigo es un programador de Python Racing que ha logrado batir el 76% de los scripts de la comunidad. </p>
                 </div>
             </div>
         );

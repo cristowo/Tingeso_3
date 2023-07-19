@@ -7,6 +7,10 @@ class ScriptService{
     getScripts(dificultad){
         return axios.get(url + '/random/' + dificultad);
     }
+    // todos son request param
+    subirScript(codigo, dificultad, respuesta){
+        return axios.post(`${url}/crear/${dificultad}/${respuesta}`, codigo);
+    }
 }
 const instance = new ScriptService();
 export default instance;

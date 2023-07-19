@@ -17,11 +17,11 @@ public class ScriptController {
     @Autowired
     ScriptService scriptService;
 
-    @PostMapping
-    public ResponseEntity<?> guardarScript(@RequestParam("codigo") MultipartFile codigo,
-                              @RequestParam("dificultad") String dificultad,
-                              @RequestParam("respuesta") String respuesta) {
-        scriptService.guardarScript(codigo, dificultad, respuesta);
+    @PostMapping("/crear/{dificultad}/{respuesta}")
+    public ResponseEntity<?> guardarScript(@RequestParam("file") MultipartFile file,
+                                           @PathVariable("dificultad") String dificultad,
+                                           @PathVariable("respuesta") String respuesta) {
+        scriptService.guardarScript(file, dificultad, respuesta);
         return ResponseEntity.ok().build();
     }
 
