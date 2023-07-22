@@ -8,6 +8,9 @@
 }
 
 .App-header {
+  background-image: url("./recursos/xiao.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: #051f1b;
   min-height: 100vh;
   display: flex;

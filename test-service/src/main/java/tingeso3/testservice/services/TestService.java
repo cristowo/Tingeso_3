@@ -29,7 +29,7 @@ public class TestService {
         return restTemplate.getForObject("http://script-service/scripts/" + id, ScriptModel.class);
     }
 
-    public List<String> getPuntaje(List<Integer> Idscripts, List<String> respuestas, Double tiempo){
+    public List<String> getPuntaje(List<Integer> Idscripts, List<String> respuestas, String tiempo){
         TestEntity test = new TestEntity();
         test.setRespuestas(respuestas);
         test.setTiempoTotal(tiempo);

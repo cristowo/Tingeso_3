@@ -22,6 +22,6 @@ public class TestEntity {
     private String dificultad;
     @ElementCollection
     private List<String> respuestas;
-    private Double tiempoTotal;
+    private String tiempoTotal;
     private Double puntaje;
 }

@@ -16,7 +16,7 @@ public class TestController {
     TestService testService;
 
     @PostMapping("/resultado/{scripts}/{resultados}/{time}")
-    public ResponseEntity<List<String>> getPuntaje(@PathVariable("scripts") List<Integer> scripts, @PathVariable("resultados") List<String> resultados, @PathVariable("time") Double tiempo){
+    public ResponseEntity<List<String>> getPuntaje(@PathVariable("scripts") List<Integer> scripts, @PathVariable("resultados") List<String> resultados, @PathVariable("time") String tiempo){
         return ResponseEntity.ok(testService.getPuntaje(scripts, resultados, tiempo));
     }
 }

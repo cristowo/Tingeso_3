@@ -3,6 +3,7 @@ import '../css/Inicio.css';
 import '../css/Prueba.css';
 import ScriptService from '../services/ScriptService';
 import TestService from '../services/TestService';
+import Cronometro from '../scripts/Cronometro';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedDarkAtom } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -15,26 +16,26 @@ export default class PruebaComponent extends Component {
       scripts: [],
       respuesta: [],
       id: [],
-      tiempo: 0.0,
+      tiempo: "00:00:00:00",
       puntaje: [],
       respuestaSubida: false,
+      isRunning: true,
     };
+    this.stopCronometro = this.stopCronometro.bind(this)
   }
 
   componentDidMount() {
     ScriptService.getScripts(this.state.dificultad)
     .then((res) => {
       this.setState({ scripts: res.data });
-  
+
       const scriptIDs = res.data.map((script) => script.id);
       this.setState({ id: scriptIDs });
     })
     .catch((error) => {
       console.error("Hubo un error al obtener los scripts: ", error);
     });
-  
   }
-  
 
   changeRespuestaHandler = (event, i) => {
     if (!this.state.respuestaSubida) {
@@ -44,14 +45,15 @@ export default class PruebaComponent extends Component {
     }
   };
 
-    selectLink(link){
-        window.location.href = link;
-    };
+  selectLink = (link) => {
+    window.location.href = link;
+  };
 
   enviarRespuestas = (e) => {
     e.preventDefault();
     if (this.state.respuesta.length === this.state.scripts.length) {
-      TestService.getPuntaje(this.state.id, this.state.respuesta, this.state.tiempo).then((res) => {
+        this.stopCronometro();
+        TestService.getPuntaje(this.state.id, this.state.respuesta, this.state.tiempo).then((res) => {
         this.setState({ puntaje: res.data, respuestaSubida: true });
       });
     } else {
@@ -59,17 +61,23 @@ export default class PruebaComponent extends Component {
     }
   };
 
-
+  // Nueva función para actualizar el estado del tiempo
+  setTiempo = (nuevoTiempo) => {
+    this.setState({ tiempo: nuevoTiempo });
+  };
+  stopCronometro() {
+    this.setState({ isRunning: false });
+  }
 
   render() {
     const { respuestaSubida , respuesta, puntaje } = this.state;
 
     return (  
         <div className="center-content">
-        <div>
+          <div>
             <div className="box">
-                <p className="titulo"> nivel {this.state.dificultad}</p>
-                tiempo actual: 20:77:3:8050
+                <p className="titulo-mini"> nivel {this.state.dificultad}</p>
+                cronometro: <Cronometro setTiempo={this.setTiempo} isRunning={this.state.isRunning} />
             </div>
         </div>
         <div>
@@ -88,10 +96,11 @@ export default class PruebaComponent extends Component {
                                     {script.codigo}
                                 </SyntaxHighlighter>
                                 <input
+                                    className='respuesta-prueba '
                                     type="text"
-                                    value={this.state.respuesta[i] || ''} // Set value from state, or empty if not available
+                                    value={this.state.respuesta[i] || ''} 
                                     onChange={(event) => this.changeRespuestaHandler(event, i)}
-                                    disabled={this.state.respuestaSubida} // Disable input if answers are submitted
+                                    disabled={this.state.respuestaSubida}
                                 />
                             </td>
                         </div>
