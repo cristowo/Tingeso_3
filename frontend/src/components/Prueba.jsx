@@ -45,23 +45,32 @@ export default class PruebaComponent extends Component {
     }
   };
 
+  enviarRespuestas = (e) => {
+    e.preventDefault();
+    if (window.confirm("¿Estás seguro de querer enviar?")) {
+        if (this.state.respuesta.length === this.state.scripts.length) {
+            this.stopCronometro();
+            TestService.getPuntaje(this.state.id, this.state.respuesta, this.state.tiempo).then((res) => {
+            this.setState({ puntaje: res.data, respuestaSubida: true });
+            });
+        } else {
+            window.alert('No se han respondido todas las preguntas');
+        }
+    }
+  };
+
+  handleStopAndReturn = () => {
+    if (window.confirm("¿Estás seguro de que deseas detener y volver al inicio?")) {
+        this.stopCronometro();
+        this.selectLink('/');
+    }
+  };
+
+
   selectLink = (link) => {
     window.location.href = link;
   };
 
-  enviarRespuestas = (e) => {
-    e.preventDefault();
-    if (this.state.respuesta.length === this.state.scripts.length) {
-        this.stopCronometro();
-        TestService.getPuntaje(this.state.id, this.state.respuesta, this.state.tiempo).then((res) => {
-        this.setState({ puntaje: res.data, respuestaSubida: true });
-      });
-    } else {
-      window.alert('No se han respondido todas las preguntas');
-    }
-  };
-
-  // Nueva función para actualizar el estado del tiempo
   setTiempo = (nuevoTiempo) => {
     this.setState({ tiempo: nuevoTiempo });
   };
@@ -75,10 +84,11 @@ export default class PruebaComponent extends Component {
     return (  
         <div className="center-content">
           <div>
-            <div className="box">
-                <p className="titulo-mini"> nivel {this.state.dificultad}</p>
-                cronometro: <Cronometro setTiempo={this.setTiempo} isRunning={this.state.isRunning} />
-            </div>
+          <div className="box">
+            <p className="titulo-mini"> nivel {this.state.dificultad}</p>
+            cronometro: <Cronometro setTiempo={this.setTiempo} isRunning={this.state.isRunning} />
+            <button className="animated-button red" onClick={this.handleStopAndReturn}>Detener y volver al inicio</button>
+        </div>
         </div>
         <div>
             <table>
@@ -124,10 +134,10 @@ export default class PruebaComponent extends Component {
                                 ))}
                             </ul>
                             <button className="animated-button" onClick={() => this.selectLink('/games')}>
-                                Volver a jugar
+                                Volver a jugar 🔄
                             </button>
                             <button className="animated-button darker-button" onClick={() => this.selectLink('/')}>
-                                Volver al inicio
+                                Volver al inicio 🏠
                             </button>
                     </div>
                 ) : (

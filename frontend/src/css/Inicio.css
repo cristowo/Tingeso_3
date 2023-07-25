@@ -103,6 +103,11 @@
     background-color: #114b41;
 }
 
+.red{
+    background-color: #c0392b;
+    color: #f8d9d3;
+}
+
 .animated-button:hover {
     background-color: #d3f8f2;
     color: #17927d;
